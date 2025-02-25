@@ -1,7 +1,3 @@
-Here's your README with some appropriate emojis added to make it more engaging:
-
----
-
 # Socket Server 🔌
 
 ## Overview
