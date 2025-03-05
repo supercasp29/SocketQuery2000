@@ -34,4 +34,13 @@ response = send_command("UNKNOWN")
 print(f"Response to UNKNOWN command: {response}")
 assert response == "ERROR: Unknown Command", "Expected response for unknown command to be 'ERROR: Unknown Command'"
 
+# Test PRIZE command
+response = send_command("PRIZE")
+print(f"Response to PRIZE command: {response}")
+
+if response:
+    assert response, "Expected response for unknown command to be non empty"
+else:
+    print("Error: Response for 'PRIZE' command is empty.")
+
 print("All tests passed!")

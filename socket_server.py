@@ -4,6 +4,7 @@ import threading
 import signal
 import sys
 import select
+import requests
 
 server_id = str(uuid.uuid4())
 clients = set()
@@ -17,8 +18,15 @@ def process_command(command):
         return server_id
     elif command == "WHY":
         return "42"
+    elif command == "PRIZE":
+        return prize_response()
     else:
         return "ERROR: Unknown Command"
+
+def prize_response():
+    response = requests.get('https://api.blockchain.info/stats')
+    data = response.json()
+    return f"Timestamp: {data['timestamp']}, Market Price (USD): {data['market_price_usd']}"
 
 def handle_client(conn, addr):
     print(f"New connection from {addr}", flush=True)
